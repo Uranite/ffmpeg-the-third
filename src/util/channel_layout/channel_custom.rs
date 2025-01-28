@@ -24,7 +24,7 @@ impl ChannelCustom {
 
         Self(AVChannelCustom {
             id: AVChannel::from(id),
-            name,
+            name: unsafe { std::mem::transmute::<[i8; 16], [u8; 16]>(name) },
             opaque: std::ptr::null_mut(),
         })
     }
